@@ -473,6 +473,25 @@
             padding: 3px 10px; border-radius: 2px;
             letter-spacing: 0.5px;
         }
+        /* ── Cognigy Webchat launcher: move to bottom left ── */
+        .webchat-root,
+        #webchat-root {
+            z-index: 9000;
+        }
+
+        /*
+         * Cognigy Webchat v3 launcher/button overrides.
+         * Multiple selectors are included because the generated class names can vary.
+         */
+        [class*="webchat"] button[aria-label*="chat" i],
+        [class*="webchat"] button[title*="chat" i],
+        button[class*="toggle"],
+        button[class*="launcher"],
+        button[class*="webchat"] {
+            left: 24px !important;
+            right: auto !important;
+            bottom: 24px !important;
+        }
     </style>
 </head>
 <body>
