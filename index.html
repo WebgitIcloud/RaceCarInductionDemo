@@ -476,62 +476,7 @@
     </style>
 </head>
 <body>
-<script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
-<script>
-    initWebchat(
-        "https://endpoint-trial.cognigy.ai/c4d3af769db07b0573cbde5d0c9f532044b292fae5968b032ac669c945d17eb3"
-    ).then(function () {
-        moveWebchatToBottomLeft();
-    });
 
-    function moveWebchatToBottomLeft() {
-        function reposition() {
-            const candidates = document.querySelectorAll(
-                'button, [role="button"], iframe, [class*="webchat"], [id*="webchat"]'
-            );
-
-            candidates.forEach(function (element) {
-                const rect = element.getBoundingClientRect();
-                const style = window.getComputedStyle(element);
-
-                /*
-                 * Identify fixed elements close to the bottom-right corner.
-                 * This avoids depending on Cognigy's generated class names.
-                 */
-                const isFixed = style.position === 'fixed';
-                const nearBottom = window.innerHeight - rect.bottom < 100;
-                const nearRight = window.innerWidth - rect.right < 100;
-                const sensibleSize =
-                    rect.width > 35 &&
-                    rect.width < 500 &&
-                    rect.height > 35 &&
-                    rect.height < 750;
-
-                if (isFixed && nearBottom && nearRight && sensibleSize) {
-                    element.style.setProperty('left', '24px', 'important');
-                    element.style.setProperty('right', 'auto', 'important');
-                }
-            });
-        }
-
-        reposition();
-
-        /*
-         * Cognigy creates and updates its elements dynamically, so observe
-         * subsequent DOM changes and reposition the launcher/chat window.
-         */
-        const observer = new MutationObserver(reposition);
-
-        observer.observe(document.body, {
-            childList: true,
-            subtree: true,
-            attributes: true,
-            attributeFilter: ['class', 'style']
-        });
-
-        window.addEventListener('resize', reposition);
-    }
-</script>
 <!-- ═══════════════════ LOGIN OVERLAY ═══════════════════ -->
 <div class="login-overlay" id="loginOverlay">
     <div class="login-box">
@@ -906,6 +851,12 @@
       window.initWebRTCWidget('https://endpoint-trial.cognigy.ai/73a640d9804b8c4a2f76b5657cabfb1aaadb564277e505f756d38a5675102989');
     }
   });
+</script>
+<script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
+<script>
+    initWebchat(
+        "https://endpoint-trial.cognigy.ai/c4d3af769db07b0573cbde5d0c9f532044b292fae5968b032ac669c945d17eb3"
+    );
 </script>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
