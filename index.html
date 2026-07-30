@@ -478,9 +478,16 @@
 <body>
 <script src="https://github.com/Cognigy/Webchat/releases/latest/download/webchat.js"></script>
 <script>
-	initWebchat(
-		"https://endpoint-trial.cognigy.ai/c4d3af769db07b0573cbde5d0c9f532044b292fae5968b032ac669c945d17eb3"
-	);
+    initWebchat(
+        "https://endpoint-trial.cognigy.ai/c4d3af769db07b0573cbde5d0c9f532044b292fae5968b032ac669c945d17eb3",
+        {
+            settings: {
+                widgetSettings: {
+                    position: "bottom-left"
+                }
+            }
+        }
+    );
 </script>
 <!-- ═══════════════════ LOGIN OVERLAY ═══════════════════ -->
 <div class="login-overlay" id="loginOverlay">
